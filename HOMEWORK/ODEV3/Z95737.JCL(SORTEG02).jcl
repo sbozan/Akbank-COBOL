@@ -3,7 +3,6 @@
 //SYSPRINT DD SYSOUT=*
 //SYSIN    DD *
     DELETE Z95737.QSAM.AA NONVSAM
-    DELETE Z95737.QSAM.BB NONVSAM
     IF LASTCC LE 08 THEN SET MAXCC = 00
 //SORT0200 EXEC PGM=SORT
 //SYSOUT   DD SYSOUT=*
@@ -29,11 +28,11 @@
 //SORTOUT  DD DSN=Z95737.QSAM.BB,
 //            DISP=(NEW,CATLG,DELETE),
 //            SPACE=(TRK,(5,5),RLSE),
-//            DCB=(RECFM=FB,LRECL=50)
+//            DCB=(RECFM=FB,LRECL=47)
 //SYSIN    DD *
     SORT FIELDS=COPY
         OUTREC FIELDS=(1,5,ZD,TO=PD,LENGTH=3,
-                       6,3,ZD,TO=PD,LENGTH=2,
+                       6,3,ZD,TO=BI,LENGTH=2,
                        9,30,
                        39,7,ZD,TO=PD,LENGTH=4,
                        46,15,ZD,TO=PD,LENGTH=8)
